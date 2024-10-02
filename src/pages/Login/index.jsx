@@ -9,7 +9,7 @@ const Login = () => {
           <img className="h-[60px]" src="x-logo.webp" alt="x-logo" />
         </div>
 
-        <h1 className="text-lg font-bold">Twitter'a giriş yap</h1>
+        <h1 className="text-lg font-bold text-center">Twitter'a giriş yap</h1>
 
         <GoogleButton />
 
