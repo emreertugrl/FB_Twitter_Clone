@@ -11,7 +11,6 @@ const Protected = () => {
   useEffect(() => {
     // onAuthStateChanged: kullanıcı oturumunu izler
     onAuthStateChanged(auth, (user) => {
-      console.log(user);
       setIsAuth(user ? true : false);
     });
   }, []);
