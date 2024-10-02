@@ -11,10 +11,10 @@ const App = () => {
         {/* oturumu açık olmayanlar bu routelara erişememeli */}
         <Route element={<Protected />}>
           <Route path="/feed" element={<Feed />} />
-          <Route path="/profile" element={"Profile"} />
-          <Route path="/ayar" element={"Ayar"} />
-          <Route path="/friend" element={"Arkadaş"} />
-        </Route>{" "}
+          {/* <Route path="/profile" element={"Profile"} />
+          <Route path="/setting" element={"Ayar"} />
+          <Route path="/friend" element={"Arkadaş"} /> */}
+        </Route>
       </Routes>
     </BrowserRouter>
   );

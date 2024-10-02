@@ -10,3 +10,9 @@
     @apply rounded-md py-1 px-3;
   }
 }
+
+/* anasayfa stilleri */
+.feed {
+  display: grid;
+  grid-template-columns: 1fr minmax(400px, 600px) 1fr;
+}
