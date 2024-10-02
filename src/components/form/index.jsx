@@ -1,28 +1,31 @@
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import React from "react";
+import React, { useState } from "react";
 import { BsCardImage } from "react-icons/bs";
 import { toast } from "react-toastify";
 import { db } from "../../firebase";
 import uploadToStorage from "../../firebase/uploadToStorage";
+import Loader from "./../loader";
 
 const Form = ({ user }) => {
-  // form gönderilince
+  const [isLoading, setIsLoading] = useState();
+  //1- form gönderilince
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // inputlardaki verilere eriş
+    //2- inputlardaki verilere eriş
     const text = e.target[0].value.trim();
     const file = e.target[1].files[0];
 
-    // yazı ve resim içeriği yoksa fonksiyonu durdur
+    //3- yazı ve resim içeriği yoksa fonksiyonu durdur
     if (!text && !file) return toast.warning("Lütfen içerik giriniz.");
-    // resmi storage'a kaydet
+    //4- resmi storage'a kaydet
     const url = await uploadToStorage(file);
 
-    // kolleksiyonun referansını al
+    setIsLoading(true);
+    //5- kolleksiyonun referansını al
     const tweetsCol = collection(db, "tweets");
 
-    // kolleksiyona yeni tweet belgesi ekle
+    //6- kolleksiyona yeni tweet belgesi ekle
     await addDoc(tweetsCol, {
       textContent: text,
       imageContent: url,
@@ -36,7 +39,9 @@ const Form = ({ user }) => {
       createdAt: serverTimestamp(),
     });
 
-    // formu sıfırlar
+    setIsLoading(false);
+    //7- formu sıfırlar
+    e.target.reset();
   };
   return (
     <form
@@ -60,8 +65,11 @@ const Form = ({ user }) => {
             <BsCardImage />
           </label>
 
-          <button className="bg-blue-600 px-3 py-2 rounded-full min-w-[85px] min-h-[40px] transition hover:bg-blue-800">
-            Tweetle
+          <button
+            disabled={isLoading}
+            className="bg-blue-600 px-3 py-2 rounded-full min-w-[85px] min-h-[40px] transition hover:bg-blue-800"
+          >
+            {isLoading ? <Loader /> : "Tweetle"}
           </button>
         </div>
       </div>
