@@ -27,14 +27,14 @@ const Dropdown = ({ tweet }) => {
   return (
     isOwn && (
       <>
-        <label class="popup">
+        <label className="popup">
           <input ref={inputRef} type="checkbox" />
-          <div class="burger" tabindex="0">
+          <div className="burger">
             <span></span>
             <span></span>
             <span></span>
           </div>
-          <nav class="popup-window">
+          <nav className="popup-window">
             <legend>Eylemler</legend>
             <ul>
               <li>
