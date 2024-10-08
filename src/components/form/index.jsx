@@ -39,6 +39,8 @@ const Form = ({ user }) => {
       createdAt: serverTimestamp(),
     });
 
+    toast.success("Tweet başarıyla yayınladı.");
+
     setIsLoading(false);
     //7- formu sıfırlar
     e.target.reset();
