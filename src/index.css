@@ -17,6 +17,9 @@
   grid-template-columns: 1fr minmax(400px, 600px) 1fr;
 }
 
+body {
+  background: black;
+}
 /* dropwdown */
 
 /* From Uiverse.io by Galahhad */
